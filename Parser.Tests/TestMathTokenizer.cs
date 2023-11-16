@@ -102,5 +102,73 @@
             Assert.AreEqual("3000", tokens[5]);
             Assert.AreEqual(")", tokens[6]);
         }
+
+        [TestMethod]
+        public void TestWithWhitespaces()
+        {
+            string expression = "123 + 321";
+
+            string[] tokens = tokenizer.Tokenize(expression);
+
+            Assert.AreEqual("123", tokens[0]);
+            Assert.AreEqual("+", tokens[1]);
+            Assert.AreEqual("321", tokens[2]);
+        }
+
+        [TestMethod]
+        public void TestWithWhitespacesWeird1()
+        {
+            string expression = "1 2 3 + 3 21";
+
+            string[] tokens = tokenizer.Tokenize(expression);
+
+            // We expect the tokenizer to strip spaces around tokens, but not inside.
+            Assert.AreEqual("1 2 3", tokens[0]);
+            Assert.AreEqual("+", tokens[1]);
+            Assert.AreEqual("3 21", tokens[2]);
+        }
+
+        [TestMethod]
+        public void TestWithWhitespacesWeird2()
+        {
+            string expression = "22 22 22 * 123 123 * 3";
+
+            string[] tokens = tokenizer.Tokenize(expression);
+
+            // We expect the tokenizer to strip spaces around tokens, but not inside.
+            Assert.AreEqual("22 22 22", tokens[0]);
+            Assert.AreEqual("*", tokens[1]);
+            Assert.AreEqual("123 123", tokens[2]);
+            Assert.AreEqual("*", tokens[3]);
+            Assert.AreEqual("3", tokens[4]);
+        }
+
+        [TestMethod]
+        public void TestInvalidExpression1()
+        {
+            string expression = "++--";
+
+            string[] tokens = tokenizer.Tokenize(expression);
+
+            // Invalid expressions should be tokenized as well, for the parser to be able to deem them invalid.
+            Assert.AreEqual("+", tokens[0]);
+            Assert.AreEqual("+", tokens[1]);
+            Assert.AreEqual("-", tokens[2]);
+            Assert.AreEqual("-", tokens[3]);
+        }
+
+        [TestMethod]
+        public void TestInvalidExpression2()
+        {
+            string expression = "))((";
+
+            string[] tokens = tokenizer.Tokenize(expression);
+
+            // Invalid expressions should be tokenized as well, for the parser to be able to deem them invalid.
+            Assert.AreEqual(")", tokens[0]);
+            Assert.AreEqual(")", tokens[1]);
+            Assert.AreEqual("(", tokens[2]);
+            Assert.AreEqual("(", tokens[3]);
+        }
     }
 }

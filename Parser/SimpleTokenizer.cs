@@ -24,25 +24,25 @@ public class SimpleTokenizer : ITokenizer
         int lastIndex = 0;
         for (int i = 0; i < expression.Length; i++)
         {
-            if (delimiters.Contains(expression[i]))
+            if (!delimiters.Contains(expression[i]))
             {
-                // Whatever was between this operator and the last one
-                string tokenSinceLastDelimiter = expression[lastIndex..i];
-
-                if (tokenSinceLastDelimiter.Length > 0)
-                {
-                    tokens.Add(tokenSinceLastDelimiter);
-                }
-
-                // The operator itself
-                tokens.Add(expression[i].ToString());
-                lastIndex = i + 1;
+                continue;
             }
+
+            // Whatever was between this operator and the last one
+            if (i - lastIndex > 0)
+            {
+                tokens.Add(expression[lastIndex..i].Trim());
+            }
+
+            // The operator itself
+            tokens.Add(expression[i].ToString());
+            lastIndex = i + 1;
         }
 
         if (lastIndex < expression.Length)
         {
-            tokens.Add(expression[lastIndex..]);
+            tokens.Add(expression[lastIndex..].Trim());
         }
 
         return tokens.ToArray();
