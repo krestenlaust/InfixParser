@@ -8,7 +8,7 @@
         [TestInitialize]
         public void TestInitialize()
         {
-            tokenizer = new Tokenizer();
+            tokenizer = new SimpleTokenizer();
         }
 
         [TestMethod]
