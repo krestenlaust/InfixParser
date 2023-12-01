@@ -17,7 +17,7 @@ public class SimpleTokenizer : ITokenizer
         delimiters.Add(')');
     }
 
-    public string[] Tokenize(string expression)
+    public IEnumerable<string> Tokenize(string expression)
     {
         List<string> tokens = new List<string>();
 

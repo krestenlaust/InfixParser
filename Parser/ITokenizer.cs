@@ -2,5 +2,5 @@
 
 public interface ITokenizer
 {
-    string[] Tokenize(string expression);
+    IEnumerable<string> Tokenize(string expression);
 }

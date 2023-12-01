@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="HelloWorld.cs" />
+  </ItemGroup>
+
 </Project>

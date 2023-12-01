@@ -1,4 +1,4 @@
-﻿namespace Parser.Tests
+﻿namespace Parser.Lexer.Tests.Tokenizer
 {
     [TestClass]
     public class TestMathTokenizer
@@ -16,7 +16,7 @@
         {
             string expression = "1+2";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();
 
             Assert.AreEqual("1", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -28,7 +28,7 @@
         {
             string expression = "1+2+3+4";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("1", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -44,7 +44,7 @@
         {
             string expression = "10+20+30+40";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("10", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -60,7 +60,7 @@
         {
             string expression = "123456789+23456789+3456789+456789";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("123456789", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -76,7 +76,7 @@
         {
             string expression = "1+(2-3)";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("1", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -92,7 +92,7 @@
         {
             string expression = "123+(23-3000)";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("123", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -108,7 +108,7 @@
         {
             string expression = "123 + 321";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             Assert.AreEqual("123", tokens[0]);
             Assert.AreEqual("+", tokens[1]);
@@ -120,7 +120,7 @@
         {
             string expression = "1 2 3 + 3 21";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             // We expect the tokenizer to strip spaces around tokens, but not inside.
             Assert.AreEqual("1 2 3", tokens[0]);
@@ -133,7 +133,7 @@
         {
             string expression = "22 22 22 * 123 123 * 3";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             // We expect the tokenizer to strip spaces around tokens, but not inside.
             Assert.AreEqual("22 22 22", tokens[0]);
@@ -148,7 +148,7 @@
         {
             string expression = "++--";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             // Invalid expressions should be tokenized as well, for the parser to be able to deem them invalid.
             Assert.AreEqual("+", tokens[0]);
@@ -162,7 +162,7 @@
         {
             string expression = "))((";
 
-            string[] tokens = tokenizer.Tokenize(expression);
+            string[] tokens = tokenizer.Tokenize(expression).ToArray();;
 
             // Invalid expressions should be tokenized as well, for the parser to be able to deem them invalid.
             Assert.AreEqual(")", tokens[0]);
