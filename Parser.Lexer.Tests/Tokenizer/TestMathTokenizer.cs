@@ -1,10 +1,11 @@
-﻿namespace Parser.Lexer.Tests.Tokenizer
+﻿#nullable disable
+namespace Parser.Lexer.Tests.Tokenizer
 {
     [TestClass]
     public class TestMathTokenizer
     {
-        ITokenizer tokenizer;
-
+        ITokenizer tokenizer = null;
+        
         [TestInitialize]
         public void TestInitialize()
         {

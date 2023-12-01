@@ -1,7 +1,7 @@
 namespace Parser.Lexer.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TestMathLexer
     {
         [TestMethod]
         public void TestMethod1()
