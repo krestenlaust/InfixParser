@@ -1,4 +1,4 @@
-﻿namespace Parser;
+﻿namespace Lexer.Tokenizer;
 
 /// <summary>
 /// Only supports operators denoted using a single character.

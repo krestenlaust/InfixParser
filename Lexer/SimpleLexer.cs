@@ -1,4 +1,4 @@
-﻿namespace Parser.Lexer;
+﻿namespace Lexer;
 
 public class SimpleLexer : ILexer
 {

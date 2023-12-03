@@ -1,5 +1,7 @@
-﻿#nullable disable
-namespace Parser.Lexer.Tests.Tokenizer
+﻿using Lexer.Tokenizer;
+
+#nullable disable
+namespace Lexer.Tests
 {
     [TestClass]
     public class TestMathTokenizer

@@ -1,4 +1,4 @@
-﻿namespace Parser;
+﻿namespace Lexer.Tokenizer;
 
 public interface ITokenizer
 {
