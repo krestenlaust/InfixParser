@@ -1,11 +1,6 @@
 ﻿namespace Lexer;
 
-public class LexicalToken
+public class LexicalToken(string originalToken)
 {
-    public string OriginalToken { get; }
-
-    public LexicalToken(string originalToken)
-    {
-        OriginalToken = originalToken;
-    }
+    public string OriginalToken { get; } = originalToken;
 }
