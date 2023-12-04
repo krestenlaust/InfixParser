@@ -1,7 +1,5 @@
-﻿using Lexer.Tokenizer;
-
-#nullable disable
-namespace Lexer.Tests
+﻿#nullable disable
+namespace Lexer.Tokenizer.Tests
 {
     [TestClass]
     public class TestMathTokenizer
