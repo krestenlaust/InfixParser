@@ -1,6 +1,8 @@
 ﻿namespace Lexer;
 
-public interface ILexicalTokenFactory
+public interface ILexicalTokenFactory<out T> where T : LexicalToken
 {
-    LexicalToken CreateLexicalizedToken(string token);
+    T CreateLexicalizedToken(string token);
+
+    bool IsTokenOfThisType(string token);
 }

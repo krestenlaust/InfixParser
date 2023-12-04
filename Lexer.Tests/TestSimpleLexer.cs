@@ -20,6 +20,7 @@ namespace Lexer.Tests
         public void TestInitialize()
         {
             lexer = new SimpleLexer();
+            testedTokenizer = new SimpleTokenizer();
         }
 
         [TestMethod]
