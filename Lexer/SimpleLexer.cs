@@ -2,8 +2,13 @@
 
 public class SimpleLexer : ILexer
 {
+    ILexicalTokenFactory factory = new SimpleLexicalTokenFactory();
+
     public IEnumerable<LexicalToken> Lexer(IEnumerable<string> tokens)
     {
-        throw new NotImplementedException();
+        foreach (var token in tokens)
+        {
+            yield return factory.CreateLexicalizedToken(token);
+        }
     }
 }
