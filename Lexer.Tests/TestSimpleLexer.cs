@@ -106,5 +106,16 @@ namespace Lexer.Tests
             Assert.IsInstanceOfType<IntegralToken>(lexedTokens[2]);
             Assert.AreEqual(23456789, ((IntegralToken)lexedTokens[2]).IntegralValue);
         }
+
+        [TestMethod]
+        public void TestParenthesis1()
+        {
+            string expr = "(1+1)";
+
+            var tokenized = testedTokenizer.Tokenize(expr);
+            LexicalToken[] lexedTokens = lexer.Lexer(tokenized).ToArray();
+
+            Assert.IsInstanceOfType<>();
+        }
     }
 }
